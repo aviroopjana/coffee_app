@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'favourite_page.dart';
+import 'home_page.dart';
 import 'notification_page.dart';
 import 'profile_page.dart';
 
@@ -7,31 +8,34 @@ class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
 
   @override
-  _BottomNavBarState createState() => _BottomNavBarState();
+  State<BottomNavBar> createState() => _BottomNavBarState();
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int _selectedIndex = 0;
-  final List<Widget> _pages = [
-    //HomePage(),
+  final List<Widget> _pages = const [
+    HomePage(),
     FavouritePage(),
     NotificationPage(),
     ProfilePage(),
   ];
 
   void _onItemTapped(int index) {
+    print(index);
     setState(() {
       _selectedIndex = index;
     });
+    // when you have web why to test this on mobile
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // the ideal way is to use a tabview
       body: _pages[_selectedIndex],
       bottomNavigationBar: NeumorphicBottomNavigationBar(
         key: const Key('neumorphic-bottom-nav'),
-        items: <BottomNavigationBarItem>[
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon((Icons.home)),
             label: 'Home',
@@ -64,7 +68,7 @@ class NeumorphicBottomNavigationBar extends StatelessWidget {
   final BottomNavigationBarType type;
 
   const NeumorphicBottomNavigationBar({
-    required Key key,
+    Key? key,
     required this.items,
     required this.currentIndex,
     required this.onTap,

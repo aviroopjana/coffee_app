@@ -13,7 +13,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const BottomNavBar(),
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
         elevation: 0,
@@ -69,9 +68,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               )),
 
-          const SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 10),
 
           //Search Bar
           TextField(

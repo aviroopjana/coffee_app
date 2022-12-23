@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/bottom_navbar.dart';
 import 'pages/home_page.dart';
 
 void main() => runApp(const MyApp());
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: const HomePage(),
+        home: const BottomNavBar(),
         theme: ThemeData(brightness: Brightness.dark));
   }
 }
