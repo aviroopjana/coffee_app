@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/utility/coffee_tile.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'bottom_navbar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,9 +17,8 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        // ignore: prefer_const_literals_to_create_immutables
-        actions: [
-          const Padding(
+        actions: const [
+          Padding(
             padding: EdgeInsets.only(right: 20.0),
             child: Icon(Icons.person),
           ),
@@ -30,10 +29,10 @@ class _HomePageState extends State<HomePage> {
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
-              child: Text("Header"),
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 46, 37, 37),
               ),
+              child: Text("CoffiCo.in"),
             ),
             ListTile(
               title: const Text('Home'),
@@ -68,22 +67,49 @@ class _HomePageState extends State<HomePage> {
                 ),
               )),
 
-          const SizedBox(height: 10),
+          const SizedBox(height: 25),
 
           //Search Bar
-          TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(25.0),
-                borderSide: const BorderSide(
-                  width: 2.0,
-                ),
-              ),
-              labelText: 'Search Coffee',
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: TextField(
+              decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.search),
+                  hintText: 'Search your Coffee',
+                  focusedBorder: OutlineInputBorder(
+                    //borderRadius: BorderRadius.circular(20.0),
+                    borderSide: BorderSide(
+                      width: 2.0,
+                      color: Colors.grey.shade600,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade600))),
             ),
           ),
 
+          const SizedBox(height: 25),
+
+          //Horizontal listview of Coffee types
+          // Container(
+          //   height: 40,
+          //   color: Colors.red,
+          // ),
+
+          const SizedBox(height: 10),
           //Horizontal listview of coffee tiles
+
+          Expanded(
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: const [
+                CoffeeTile(),
+                CoffeeTile(),
+                CoffeeTile(),
+              ],
+            ),
+          ),
         ],
       ),
     );
