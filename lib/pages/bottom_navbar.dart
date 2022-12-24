@@ -21,7 +21,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   ];
 
   void _onItemTapped(int index) {
-    print(index);
+    //print(index);
     setState(() {
       _selectedIndex = index;
     });
@@ -31,7 +31,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // the ideal way is to use a tabview
       body: _pages[_selectedIndex],
       bottomNavigationBar: NeumorphicBottomNavigationBar(
         key: const Key('neumorphic-bottom-nav'),
@@ -45,8 +44,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
             label: 'Favorites',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
+            icon: Icon(Icons.notifications),
+            label: 'Notifications',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
