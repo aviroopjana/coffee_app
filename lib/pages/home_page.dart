@@ -27,6 +27,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -43,7 +44,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 46, 37, 37),
+                color: Color.fromARGB(255, 17, 11, 11),
               ),
               child: Text("CoffiCo.in"),
             ),
@@ -68,81 +69,94 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      body: Column(
-        children: [
-          // Find the best coffee for you
-          Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Text(
-                "Find the best coffee for you",
-                style: GoogleFonts.bebasNeue(
-                  fontSize: 60,
-                ),
-              )),
-
-          const SizedBox(height: 25),
-
-          //Search Bar
-
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: TextField(
-              decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.search),
-                  hintText: 'Search your Coffee',
-                  focusedBorder: OutlineInputBorder(
-                    //borderRadius: BorderRadius.circular(20.0),
-                    borderSide: BorderSide(
-                      width: 2.0,
-                      color: Colors.grey.shade600,
-                    ),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color.fromARGB(255, 36, 36, 36),
+              Color.fromARGB(255, 126, 119, 119),
+            ],
+          ),
+        ),
+        child: Column(
+          children: [
+            // Find the best coffee for you
+            Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Text(
+                  "Find the best coffee for you",
+                  style: GoogleFonts.bebasNeue(
+                    fontSize: 60,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade600))),
+                )),
+
+            const SizedBox(height: 25),
+
+            //Search Bar
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: TextField(
+                decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.search),
+                    hintText: 'Search your Coffee',
+                    focusedBorder: OutlineInputBorder(
+                      //borderRadius: BorderRadius.circular(20.0),
+                      borderSide: BorderSide(
+                        width: 2.0,
+                        color: Colors.grey.shade600,
+                      ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey.shade600))),
+              ),
             ),
-          ),
 
-          const SizedBox(height: 25),
+            const SizedBox(height: 25),
 
-          //Horizontal listview of Coffee types
-          Container(
-            height: 50,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                CoffeeType(
-                  coffeeType: 'Cappucino',
-                  isSelected: true,
-                  //onTap: CoffeeTypeSelected,
-                ),
-                CoffeeType(
-                  coffeeType: 'Espresso',
-                  isSelected: false,
-                  //onTap: CoffeeTypeSelected,
-                ),
-                CoffeeType(
-                  coffeeType: 'Americano',
-                  isSelected: false,
-                  //onTap: CoffeeTypeSelected,
-                ),
-              ],
+            //Horizontal listview of Coffee types
+            Container(
+              height: 50,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  CoffeeType(
+                    coffeeType: 'Cappucino',
+                    isSelected: true,
+                    //onTap: CoffeeTypeSelected,
+                  ),
+                  CoffeeType(
+                    coffeeType: 'Espresso',
+                    isSelected: false,
+                    //onTap: CoffeeTypeSelected,
+                  ),
+                  CoffeeType(
+                    coffeeType: 'Americano',
+                    isSelected: false,
+                    //onTap: CoffeeTypeSelected,
+                  ),
+                ],
+              ),
             ),
-          ),
 
-          //const SizedBox(height: 10),
-          //Horizontal listview of coffee tiles
+            //const SizedBox(height: 10),
 
-          Expanded(
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: const [
-                CoffeeTile(),
-                CoffeeTile(),
-                CoffeeTile(),
-              ],
+            //Horizontal listview of coffee tiles
+
+            Expanded(
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: const [
+                  CoffeeTile(),
+                  CoffeeTile(),
+                  CoffeeTile(),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
